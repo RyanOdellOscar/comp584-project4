@@ -1,13 +1,100 @@
 html {
     box-sizing: border-box;
 }
+/* border box declaration and inheritance */
 *, *:before, *:after {
     box-sizing: inherit;
 }
 body {
   padding: 0;
   margin: 0;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .wrapper {
     width: 400px;
+    margin: 0 auto;
+    align-self: center;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #000000;
+}
+
+[class*="button-"] {
+	grid-row: span 1;
+    border: 1px solid #ccc;
+}
+
+/* Add colors to see how much space each button is taking
+only operator buttons are orange. the rest are grey */
+.operator-button, .equals-button {
+    background-color: orange;
+    color: white;
+    font-size: 2rem;
+}
+.number-button, .zero-button, .clear-button, .back-button {
+    background-color: rgb(223, 213, 213);
+    color: black;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+/* add hover states and active pseudo classes to show different states of button behavior */
+.operator-button:hover, .equals-button:hover {
+    background-color: darkorange;
+}
+.operator-button:active, .equals-button:active {
+    background-color:orangered;
+}
+.number-button:hover, .zero-button:hover, .clear-button:hover, .back-button:hover {
+    background-color: rgb(200, 190, 190);
+}
+.number-button:active, .zero-button:active, .clear-button:active, .back-button:active {
+    background-color: rgb(120, 216, 90);
+}
+
+/* button and screen sizes */
+.clear-button {
+    grid-column: 1 / 3;
+    border: 1px solid #000000;
+}
+.back-button, .operator-button, .number-button {
+    grid-column: span 1;
+}
+.zero-button {
+    grid-column: 1 / 4;
+}
+
+/*max width of wrapper is 400px */
+section {
+    max-width: 400px;
+    display: grid;
+    width: 100%;
+}
+.calculator-screen {
+    height: 75px;
+}
+/* setting the display */
+.display {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    font-size: 3rem;
+    background-color: black;
+    color: white;
+    padding: 0 10px;
+}
+
+/* setting a grid display for the buttons */
+.calculator-buttons {
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+    grid-template-rows: 20% 20% 20% 20% 20%;
+    width: 400px;
+    height: 475px;
+    order: 1;
 }
