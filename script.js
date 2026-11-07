@@ -6,6 +6,7 @@ const back = document.querySelector('.back-button');
 let operatorButtons = document.querySelectorAll('.operator-button');
 let numberButtons = document.querySelectorAll('.number-button, .zero-button');
 const equals = document.querySelector('.equals-button');
+const sign = document.querySelector('.sign-button');
 var pushedOperator = false;
 var limitReached = false;
 var resultFound = false;
@@ -13,7 +14,7 @@ var resultFound = false;
 // array of numbers and operators in the calculator with max length of 10
 let numbers = [];
 
-
+// function for every number button and only activates if the limit is not reached and no result was found yet
 numberButtons.forEach(button => {
     console.log(button.textContent);
     button.addEventListener('click', () => {
@@ -27,6 +28,7 @@ operatorButtons.forEach(button => {
     button.addEventListener('click', () => addOperator(button.textContent));
 })
 
+// empties the whole display and resets calculator state
 clear.addEventListener('click', () => {
     limitReached = false;
     pushedOperator = false;
@@ -36,6 +38,7 @@ clear.addEventListener('click', () => {
     currentText.textContent = currentValue;
 })
 
+// deletes latest digit or operator from display
 back.addEventListener('click', () => {
     limitReached = false;
     if (currentValue > 0) {
@@ -46,6 +49,13 @@ back.addEventListener('click', () => {
         pushedOperator = false;
     }
     updateDisplay();
+})
+// toggles the sign of the current value
+sign.addEventListener('click', () => {
+    if (!limitReached && !resultFound) {
+        currentValue *= -1;
+        updateDisplay();
+    }
 })
 
 // continues adding digits as long as no operator is pressed and only pushes the final number
@@ -73,6 +83,7 @@ function addOperator(operator) {
     }
 }
 
+// activates expression evaluator
 equals.addEventListener('click', () => {
     if (!pushedOperator && !limitReached) {
         numbers.push(currentValue);
@@ -82,6 +93,7 @@ equals.addEventListener('click', () => {
     }
 });
 
+// solves the equations
 function evaluateExpression(numbers) {
     let result = numbers[0];
     for (let i = 1; i < numbers.length; i += 2) {
@@ -108,6 +120,7 @@ function evaluateExpression(numbers) {
     return result;
 }
 
+// helper function to update the display
 function updateDisplay() {
     if (numbers.length === 0) {
         currentText.textContent = currentValue;

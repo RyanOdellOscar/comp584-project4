@@ -35,7 +35,7 @@ only operator buttons are orange. the rest are grey */
     color: white;
     font-size: 2rem;
 }
-.number-button, .zero-button, .clear-button, .back-button {
+.number-button, .zero-button, .clear-button, .back-button, .sign-button {
     background-color: rgb(223, 213, 213);
     color: black;
     font-size: 2rem;
@@ -43,16 +43,16 @@ only operator buttons are orange. the rest are grey */
 }
 
 /* add hover states and active pseudo classes to show different states of button behavior */
-.operator-button:hover, .equals-button:hover {
+.operator-button:hover, .equals-button:hover{
     background-color: darkorange;
 }
 .operator-button:active, .equals-button:active {
     background-color:orangered;
 }
-.number-button:hover, .zero-button:hover, .clear-button:hover, .back-button:hover {
+.number-button:hover, .zero-button:hover, .clear-button:hover, .back-button:hover, .sign-button:hover {
     background-color: rgb(200, 190, 190);
 }
-.number-button:active, .zero-button:active, .clear-button:active, .back-button:active {
+.number-button:active, .zero-button:active, .clear-button:active, .back-button:active, .sign-button:active {
     background-color: rgb(120, 216, 90);
 }
 
@@ -61,11 +61,11 @@ only operator buttons are orange. the rest are grey */
     grid-column: 1 / 3;
     border: 1px solid #000000;
 }
-.back-button, .operator-button, .number-button {
+.back-button, .operator-button, .number-button, .sign-button, .equals-button {
     grid-column: span 1;
 }
 .zero-button {
-    grid-column: 1 / 4;
+    grid-column: 1 / 3;
 }
 
 /*max width of wrapper is 400px */
